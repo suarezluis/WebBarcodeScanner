@@ -18,3 +18,7 @@ Quagga.init(
     Quagga.start();
   }
 );
+
+Quagga.onDetected(data => {
+  alert(data);
+});
