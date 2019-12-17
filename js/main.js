@@ -20,5 +20,5 @@ Quagga.init(
 );
 
 Quagga.onDetected(data => {
-  alert(data);
+  alert(data.codeResult.code);
 });
