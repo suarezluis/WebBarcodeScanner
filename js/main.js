@@ -6,7 +6,13 @@ Quagga.init(
       target: document.querySelector("#camera") // Or '#yourElement' (optional)
     },
     decoder: {
-      readers: ["code_128_reader"]
+      readers: ["code_128_reader"],
+      debug: {
+        drawBoundingBox: true,
+        showFrequency: true,
+        drawScanline: true,
+        showPattern: true
+      }
     }
   },
   function(err) {
@@ -28,6 +34,7 @@ Quagga.onDetected(data => {
   let match = regex.test(barCode);
   if (match) {
     $(".result").html(data.codeResult.code);
+    $("#camera").html(data.codeResult.code);
     Quagga.stop();
   }
 });
