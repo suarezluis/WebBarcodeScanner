@@ -21,6 +21,13 @@ Quagga.init(
 
 Quagga.onDetected(data => {
   //   alert(data.codeResult.code);
-  console.log(data.codeResult.code);
-  $(".result").html(data.codeResult.code);
+  // console.log(data.codeResult.code);
+
+  let barCode = data.codeResult.code;
+  let regex = /^(?=.*[0-9])(?=.*[A-z])[0-9A-z-]{17}$/;
+  let match = regex.test(barCode);
+  if (match) {
+    $(".result").html(data.codeResult.code);
+    Quagga.stop();
+  }
 });
